@@ -148,7 +148,7 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
                     className={cn(
                       "mt-0.5 h-5 w-5 rounded border flex items-center justify-center transition-colors shrink-0",
                       task.approved
-                        ? "bg-blue-500 border-blue-500"
+                        ? "bg-brand border-brand"
                         : "bg-zinc-900 border-zinc-700 hover:border-zinc-500",
                     )}
                   >
@@ -232,7 +232,7 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
                         className={cn(
                           "ml-auto inline-flex items-center gap-1 text-xs rounded-full px-2 py-0.5 ring-1 transition-colors",
                           task.client_visible
-                            ? "bg-blue-500/15 text-blue-300 ring-blue-500/30"
+                            ? "bg-brand/15 text-brand-soft ring-brand/40"
                             : "bg-zinc-800 text-zinc-400 ring-zinc-700 hover:text-zinc-200",
                         )}
                       >
@@ -382,7 +382,7 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
           <button
             type="button"
             onClick={() => setTranscript(SAMPLE_TRANSCRIPT)}
-            className="text-xs text-blue-400 hover:text-blue-300"
+            className="text-xs text-brand hover:text-rose-400"
           >
             Use demo sample (FR + EN)
           </button>

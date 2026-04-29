@@ -1,6 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { requireClient } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
+import { BrandMark } from "@/components/shared/brand-mark";
 
 export default async function PortalLayout({
   children,
@@ -28,7 +29,7 @@ export default async function PortalLayout({
       <header className="border-b border-zinc-900 bg-zinc-950/80 backdrop-blur sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="text-sm tracking-[0.3em] text-zinc-400">NOT.</div>
+            <BrandMark size="sm" />
             <div className="h-4 w-px bg-zinc-800" />
             <div className="text-sm text-zinc-300">{client.name}</div>
           </div>

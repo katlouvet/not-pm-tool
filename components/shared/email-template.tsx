@@ -93,7 +93,7 @@ export function EmailTemplate({
             cy={48}
             r={radius}
             fill="none"
-            stroke="#60a5fa"
+            stroke="#cc0000"
             strokeWidth={8}
             strokeLinecap="round"
             strokeDasharray={circumference}
@@ -172,7 +172,7 @@ export function EmailTemplate({
               gap: 8,
             }}
           >
-            <span style={{ color: "#60a5fa" }}>→</span>
+            <span style={{ color: "#cc0000" }}>→</span>
             <span>{inProgress.name}</span>
             <span style={{ color: "#71717a", marginLeft: "auto" }}>
               {inProgress.percent}%
@@ -191,7 +191,7 @@ export function EmailTemplate({
               style={{
                 width: `${inProgress.percent}%`,
                 height: "100%",
-                backgroundColor: "#60a5fa",
+                backgroundColor: "#cc0000",
               }}
             />
           </div>

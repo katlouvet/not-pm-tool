@@ -39,7 +39,7 @@ export function ProgressRing({
           strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={offset}
-          className="text-blue-400 transition-all duration-700"
+          className="text-brand transition-all duration-700"
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">

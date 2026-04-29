@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { requireTeam } from "@/lib/auth";
 import { LayoutGrid, Users, Calendar, MessagesSquare, LogOut } from "lucide-react";
+import { BrandMark } from "@/components/shared/brand-mark";
 
 export default async function DashboardLayout({
   children,
@@ -20,8 +21,7 @@ export default async function DashboardLayout({
     <div className="min-h-screen flex bg-zinc-950 text-zinc-100">
       <aside className="w-60 border-r border-zinc-800 bg-zinc-950 flex flex-col">
         <div className="px-6 py-5 border-b border-zinc-800">
-          <div className="text-sm tracking-[0.3em] text-zinc-400">NOT.</div>
-          <div className="text-xs text-zinc-500 mt-1">PM Tool</div>
+          <BrandMark size="md" suffix="PM" />
         </div>
 
         <nav className="flex-1 px-3 py-4 space-y-1">

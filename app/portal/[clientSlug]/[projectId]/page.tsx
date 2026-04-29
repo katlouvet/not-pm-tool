@@ -68,7 +68,7 @@ export default async function PortalProjectPage({
   return (
     <main className="max-w-4xl mx-auto px-6 py-10 space-y-8">
       {/* Hero */}
-      <section className="rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900/80 to-zinc-950 p-8">
+      <section className="rounded-2xl border border-zinc-800 bg-linear-to-br from-zinc-900/80 to-zinc-950 p-8">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <ProgressRing percent={percent} label={statusLabel(project.status)} />
           <div className="flex-1 space-y-3 text-center md:text-left">
@@ -189,7 +189,7 @@ export default async function PortalProjectPage({
                 className={cn(
                   "h-2 w-2 rounded-full shrink-0",
                   stage.status === "done" && "bg-emerald-400",
-                  stage.status === "in_progress" && "bg-blue-400 animate-pulse",
+                  stage.status === "in_progress" && "bg-brand animate-pulse",
                   stage.status === "not_started" && "bg-zinc-700",
                   stage.status === "blocked" && "bg-red-400",
                 )}

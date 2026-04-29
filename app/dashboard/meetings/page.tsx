@@ -24,7 +24,7 @@ export default async function MeetingsPage() {
         </div>
         <Link
           href="/dashboard/meetings/new"
-          className="inline-flex items-center gap-2 rounded-lg bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 text-sm font-medium transition-colors"
+          className="inline-flex items-center gap-2 rounded-lg bg-brand hover:bg-rose-600 text-white px-4 py-2 text-sm font-medium transition-colors"
         >
           <Plus className="h-4 w-4" />
           Process transcript

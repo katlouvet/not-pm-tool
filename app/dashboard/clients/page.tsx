@@ -42,7 +42,7 @@ export default async function ClientsPage() {
                   <td className="px-4 py-3 text-right">
                     <Link
                       href={`/portal/${c.slug}`}
-                      className="text-xs text-blue-400 hover:text-blue-300"
+                      className="text-xs text-brand hover:text-rose-400"
                     >
                       View portal →
                     </Link>

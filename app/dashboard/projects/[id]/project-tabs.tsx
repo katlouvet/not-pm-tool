@@ -115,7 +115,7 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
                       {percent !== null && (
                         <div className="h-1 rounded-full bg-zinc-800 overflow-hidden">
                           <div
-                            className="h-full bg-blue-400"
+                            className="h-full bg-brand"
                             style={{ width: `${percent}%` }}
                           />
                         </div>
@@ -143,7 +143,7 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
                   className={cn(
                     "h-2 w-2 rounded-full shrink-0",
                     stage.status === "done" && "bg-emerald-400",
-                    stage.status === "in_progress" && "bg-blue-400 animate-pulse",
+                    stage.status === "in_progress" && "bg-brand animate-pulse",
                     stage.status === "not_started" && "bg-zinc-700",
                     stage.status === "blocked" && "bg-red-400",
                   )}
@@ -218,7 +218,7 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
                     </td>
                     <td className="px-4 py-3 text-center">
                       {t.client_visible ? (
-                        <Eye className="h-4 w-4 text-blue-400 inline" />
+                        <Eye className="h-4 w-4 text-brand inline" />
                       ) : (
                         <EyeOff className="h-4 w-4 text-zinc-600 inline" />
                       )}
