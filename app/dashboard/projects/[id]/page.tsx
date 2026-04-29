@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Mail } from "lucide-react";
 import { getProjectDetail } from "@/lib/projects";
 import { StatusBadge } from "@/components/shared/status-badge";
 import { ProjectTabs } from "./project-tabs";
@@ -35,7 +35,16 @@ export default async function ProjectDetailPage({
             </div>
             <h1 className="text-2xl font-semibold mt-1">{project.name}</h1>
           </div>
-          <StatusBadge status={project.status} />
+          <div className="flex items-center gap-3">
+            <Link
+              href={`/email-preview/${project.id}`}
+              className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-zinc-200 px-3 py-1.5 rounded-md border border-zinc-800 hover:border-zinc-700 transition-colors"
+            >
+              <Mail className="h-3.5 w-3.5" />
+              Preview Monday email
+            </Link>
+            <StatusBadge status={project.status} />
+          </div>
         </div>
         <div className="flex gap-6 text-sm text-zinc-400">
           {project.kickoff_date && (
