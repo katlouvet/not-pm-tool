@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "magic-link": "node --env-file=.env.local --experimental-strip-types scripts/magic-link.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.91.1",
