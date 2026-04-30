@@ -19,9 +19,9 @@ type ReviewableTask = ExtractedTask & {
 };
 
 const CONF_STYLES = {
-  high: "bg-emerald-500/15 text-emerald-300 ring-emerald-500/30",
-  medium: "bg-amber-500/15 text-amber-300 ring-amber-500/30",
-  low: "bg-red-500/15 text-red-300 ring-red-500/30",
+  high: "bg-emerald-50 text-emerald-700 ring-emerald-200",
+  medium: "bg-amber-50 text-amber-700 ring-amber-200",
+  low: "bg-rose-50 text-rose-700 ring-rose-200",
 };
 
 export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
@@ -109,17 +109,17 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
     const approvedCount = tasks.filter((t) => t.approved).length;
     return (
       <div className="space-y-6">
-        <section className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 space-y-2">
-          <div className="text-xs uppercase tracking-wider text-zinc-500">Summary</div>
-          <p className="text-sm text-zinc-200 leading-relaxed">{extracted.summary}</p>
+        <section className="rounded-xl border border-stone-200 bg-white p-5 space-y-2">
+          <div className="text-xs uppercase tracking-wider text-stone-500">Summary</div>
+          <p className="text-sm text-stone-900 leading-relaxed">{extracted.summary}</p>
         </section>
 
         <section className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm uppercase tracking-wider text-zinc-500">
+            <h2 className="text-sm uppercase tracking-wider text-stone-500">
               Extracted tasks ({tasks.length})
             </h2>
-            <div className="text-xs text-zinc-500">
+            <div className="text-xs text-stone-500">
               {approvedCount} of {tasks.length} selected for commit
             </div>
           </div>
@@ -131,8 +131,8 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
                 className={cn(
                   "rounded-xl border p-4 space-y-3 transition-colors",
                   task.approved
-                    ? "border-zinc-700 bg-zinc-900/60"
-                    : "border-zinc-800/50 bg-zinc-900/20 opacity-60",
+                    ? "border-stone-300 bg-stone-100"
+                    : "border-stone-200/50 bg-white/40 opacity-60",
                 )}
               >
                 <div className="flex items-start gap-3">
@@ -148,8 +148,8 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
                     className={cn(
                       "mt-0.5 h-5 w-5 rounded border flex items-center justify-center transition-colors shrink-0",
                       task.approved
-                        ? "bg-brand border-brand"
-                        : "bg-zinc-900 border-zinc-700 hover:border-zinc-500",
+                        ? "bg-accent-deep border-accent-deep"
+                        : "bg-white border-stone-300 hover:border-stone-400",
                     )}
                   >
                     {task.approved && <Check className="h-3 w-3 text-white" />}
@@ -166,7 +166,7 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
                           ),
                         )
                       }
-                      className="w-full bg-transparent border-0 text-zinc-100 font-medium focus:outline-none focus:ring-0 px-0"
+                      className="w-full bg-transparent border-0 text-stone-900 font-medium focus:outline-none focus:ring-0 px-0"
                     />
                     <div className="flex flex-wrap items-center gap-3 text-xs">
                       <span
@@ -178,7 +178,7 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
                         {task.confidence} confidence
                       </span>
                       <div className="flex items-center gap-1.5">
-                        <span className="text-zinc-500">Owner:</span>
+                        <span className="text-stone-500">Owner:</span>
                         <input
                           value={task.owner}
                           onChange={(e) =>
@@ -190,11 +190,11 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
                               ),
                             )
                           }
-                          className="bg-zinc-800 border border-zinc-700 rounded px-2 py-0.5 text-zinc-200 text-xs w-32 focus:outline-none focus:border-zinc-500"
+                          className="bg-white border border-stone-300 rounded px-2 py-0.5 text-stone-900 text-xs w-32 focus:outline-none focus:border-stone-500"
                         />
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <span className="text-zinc-500">Due:</span>
+                        <span className="text-stone-500">Due:</span>
                         <input
                           type="date"
                           value={task.due_date ?? ""}
@@ -210,11 +210,11 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
                               ),
                             )
                           }
-                          className="bg-zinc-800 border border-zinc-700 rounded px-2 py-0.5 text-zinc-200 text-xs focus:outline-none focus:border-zinc-500"
+                          className="bg-white border border-stone-300 rounded px-2 py-0.5 text-stone-900 text-xs focus:outline-none focus:border-stone-500"
                         />
                       </div>
                       {task.due_date_original_text && (
-                        <span className="text-zinc-500 italic">
+                        <span className="text-stone-500 italic">
                           ({task.due_date_original_text})
                         </span>
                       )}
@@ -232,8 +232,8 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
                         className={cn(
                           "ml-auto inline-flex items-center gap-1 text-xs rounded-full px-2 py-0.5 ring-1 transition-colors",
                           task.client_visible
-                            ? "bg-brand/15 text-brand-soft ring-brand/40"
-                            : "bg-zinc-800 text-zinc-400 ring-zinc-700 hover:text-zinc-200",
+                            ? "bg-accent-soft text-accent-deep ring-accent-deep/40"
+                            : "bg-stone-200 text-stone-600 ring-zinc-700 hover:text-stone-900",
                         )}
                       >
                         {task.client_visible ? (
@@ -248,7 +248,7 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
                       </button>
                     </div>
                     {task.source_quote && (
-                      <div className="text-xs text-zinc-500 italic border-l-2 border-zinc-800 pl-3 leading-relaxed">
+                      <div className="text-xs text-stone-500 italic border-l-2 border-stone-200 pl-3 leading-relaxed">
                         “{task.source_quote}”
                       </div>
                     )}
@@ -261,21 +261,21 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
 
         {extracted.decisions.length > 0 && (
           <section className="space-y-3">
-            <h2 className="text-sm uppercase tracking-wider text-zinc-500">
+            <h2 className="text-sm uppercase tracking-wider text-stone-500">
               Decisions noted ({extracted.decisions.length})
             </h2>
             <ul className="space-y-2">
               {extracted.decisions.map((d, i) => (
                 <li
                   key={i}
-                  className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 text-sm space-y-1"
+                  className="rounded-xl border border-stone-200 bg-white p-4 text-sm space-y-1"
                 >
-                  <div className="text-zinc-100 font-medium">{d.decision}</div>
+                  <div className="text-stone-900 font-medium">{d.decision}</div>
                   {d.rationale && (
-                    <div className="text-zinc-400">{d.rationale}</div>
+                    <div className="text-stone-600">{d.rationale}</div>
                   )}
                   {d.source_quote && (
-                    <div className="text-xs text-zinc-500 italic mt-2 border-l-2 border-zinc-800 pl-3">
+                    <div className="text-xs text-stone-500 italic mt-2 border-l-2 border-stone-200 pl-3">
                       “{d.source_quote}”
                     </div>
                   )}
@@ -287,17 +287,17 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
 
         {extracted.blockers.length > 0 && (
           <section className="space-y-3">
-            <h2 className="text-sm uppercase tracking-wider text-zinc-500">
+            <h2 className="text-sm uppercase tracking-wider text-stone-500">
               Blockers flagged ({extracted.blockers.length})
             </h2>
             <ul className="space-y-2">
               {extracted.blockers.map((b, i) => (
                 <li
                   key={i}
-                  className="rounded-xl border border-red-500/20 bg-red-500/5 p-4 text-sm space-y-1"
+                  className="rounded-xl border border-rose-200 bg-rose-50/60 p-4 text-sm space-y-1"
                 >
-                  <div className="text-zinc-100 font-medium">{b.description}</div>
-                  <div className="text-xs text-zinc-500">
+                  <div className="text-stone-900 font-medium">{b.description}</div>
+                  <div className="text-xs text-stone-500">
                     Owner: {b.owner}
                     {b.resolution_by && ` · Resolve by ${b.resolution_by}`}
                   </div>
@@ -308,12 +308,12 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
         )}
 
         {error && (
-          <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300">
+          <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-700">
             {error}
           </div>
         )}
 
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-zinc-800">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-stone-200">
           <Button
             variant="ghost"
             onClick={() => {
@@ -356,7 +356,7 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
             id="project"
             value={projectId}
             onChange={(e) => setProjectId(e.target.value)}
-            className="w-full bg-zinc-900 border border-zinc-800 rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-zinc-600"
+            className="w-full bg-white border border-stone-200 rounded-md px-3 py-2 text-sm text-stone-900 focus:outline-none focus:border-stone-500"
           >
             {projects.map((p) => (
               <option key={p.id} value={p.id}>
@@ -382,7 +382,7 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
           <button
             type="button"
             onClick={() => setTranscript(SAMPLE_TRANSCRIPT)}
-            className="text-xs text-brand hover:text-rose-400"
+            className="text-xs text-accent-deep hover:text-accent-deeper"
           >
             Use demo sample (FR + EN)
           </button>
@@ -393,12 +393,12 @@ export function TranscriptFlow({ projects }: { projects: ProjectOption[] }) {
           onChange={(e) => setTranscript(e.target.value)}
           rows={16}
           placeholder="Paste your meeting transcript here..."
-          className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-3 py-2 text-sm text-zinc-100 font-mono leading-relaxed focus:outline-none focus:border-zinc-600 resize-y"
+          className="w-full bg-canvas border border-stone-200 rounded-md px-3 py-2 text-sm text-stone-900 font-mono leading-relaxed focus:outline-none focus:border-stone-500 resize-y"
         />
       </div>
 
       {error && (
-        <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300">
+        <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-700">
           {error}
         </div>
       )}

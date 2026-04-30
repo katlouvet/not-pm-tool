@@ -1,14 +1,14 @@
 import { cn } from "@/lib/utils";
 
 const STATUS_STYLES = {
-  planning: "bg-zinc-900 text-zinc-300 ring-1 ring-zinc-700",
+  planning: "bg-stone-100 text-stone-700 ring-1 ring-stone-300",
   in_progress:
-    "bg-brand/10 text-brand-soft ring-1 ring-brand/40",
-  done: "bg-emerald-500/10 text-emerald-300 ring-1 ring-emerald-500/30",
-  paused: "bg-amber-500/10 text-amber-300 ring-1 ring-amber-500/30",
-  not_started: "bg-zinc-900 text-zinc-500 ring-1 ring-zinc-800",
-  blocked: "bg-rose-500/10 text-rose-300 ring-1 ring-rose-500/30",
-  open: "bg-zinc-900 text-zinc-300 ring-1 ring-zinc-700",
+    "bg-accent-soft text-accent-deep ring-1 ring-accent-deep/30",
+  done: "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200",
+  paused: "bg-amber-50 text-amber-700 ring-1 ring-amber-200",
+  not_started: "bg-stone-50 text-stone-500 ring-1 ring-stone-200",
+  blocked: "bg-rose-50 text-rose-700 ring-1 ring-rose-200",
+  open: "bg-stone-100 text-stone-700 ring-1 ring-stone-300",
 } as const;
 
 const STATUS_LABELS = {

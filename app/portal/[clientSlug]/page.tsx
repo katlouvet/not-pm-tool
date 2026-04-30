@@ -39,7 +39,7 @@ export default async function PortalHome({
     <main className="max-w-4xl mx-auto px-6 py-12 space-y-8">
       <div className="space-y-2">
         <h1 className="text-3xl font-semibold">Your projects</h1>
-        <p className="text-sm text-zinc-400">
+        <p className="text-sm text-stone-600">
           {list.length} active {list.length === 1 ? "project" : "projects"} with NOT.
         </p>
       </div>
@@ -59,16 +59,16 @@ export default async function PortalHome({
             <Link
               key={project.id}
               href={`/portal/${clientSlug}/${project.id}`}
-              className="rounded-xl border border-zinc-800 bg-zinc-900/40 hover:bg-zinc-900 hover:border-zinc-700 transition-colors p-6 space-y-4"
+              className="rounded-xl border border-stone-200 bg-white hover:bg-white hover:border-stone-300 transition-colors p-6 space-y-4"
             >
               <div className="flex items-start justify-between gap-3">
-                <div className="text-base font-medium text-zinc-100">
+                <div className="text-base font-medium text-stone-900">
                   {project.name}
                 </div>
                 <StatusBadge status={project.status} />
               </div>
               <div className="space-y-2">
-                <div className="flex justify-between text-xs text-zinc-500">
+                <div className="flex justify-between text-xs text-stone-500">
                   <span>{percent}% complete</span>
                   {project.delivery_date && (
                     <span>
@@ -78,9 +78,9 @@ export default async function PortalHome({
                     </span>
                   )}
                 </div>
-                <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
+                <div className="h-1.5 rounded-full bg-stone-200 overflow-hidden">
                   <div
-                    className="h-full bg-brand transition-all"
+                    className="h-full bg-accent-deep transition-all"
                     style={{ width: `${percent}%` }}
                   />
                 </div>

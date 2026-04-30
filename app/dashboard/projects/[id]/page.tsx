@@ -21,7 +21,7 @@ export default async function ProjectDetailPage({
     <div className="px-8 py-8 space-y-6">
       <Link
         href="/dashboard"
-        className="inline-flex items-center gap-1 text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
+        className="inline-flex items-center gap-1 text-sm text-stone-600 hover:text-stone-900 transition-colors"
       >
         <ChevronLeft className="h-4 w-4" />
         All projects
@@ -30,7 +30,7 @@ export default async function ProjectDetailPage({
       <header className="space-y-3">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <div className="text-xs uppercase tracking-wider text-zinc-500">
+            <div className="text-xs uppercase tracking-wider text-stone-500">
               {project.client.name}
             </div>
             <h1 className="text-2xl font-semibold mt-1">{project.name}</h1>
@@ -38,7 +38,7 @@ export default async function ProjectDetailPage({
           <div className="flex items-center gap-3">
             <Link
               href={`/email-preview/${project.id}`}
-              className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-zinc-200 px-3 py-1.5 rounded-md border border-zinc-800 hover:border-zinc-700 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs text-stone-600 hover:text-stone-900 px-3 py-1.5 rounded-md border border-stone-200 hover:border-stone-300 transition-colors"
             >
               <Mail className="h-3.5 w-3.5" />
               Preview Monday email
@@ -46,16 +46,16 @@ export default async function ProjectDetailPage({
             <StatusBadge status={project.status} />
           </div>
         </div>
-        <div className="flex gap-6 text-sm text-zinc-400">
+        <div className="flex gap-6 text-sm text-stone-600">
           {project.kickoff_date && (
             <div>
-              <span className="text-zinc-500">Kick-off:</span>{" "}
+              <span className="text-stone-500">Kick-off:</span>{" "}
               {format(new Date(project.kickoff_date), "MMM d, yyyy")}
             </div>
           )}
           {project.delivery_date && (
             <div>
-              <span className="text-zinc-500">Delivery:</span>{" "}
+              <span className="text-stone-500">Delivery:</span>{" "}
               {format(new Date(project.delivery_date), "MMM d, yyyy")}
             </div>
           )}

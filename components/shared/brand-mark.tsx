@@ -18,14 +18,14 @@ export function BrandMark({
   return (
     <span
       className={cn(
-        "inline-flex items-baseline italic font-bold tracking-tight text-zinc-50 select-none",
+        "inline-flex items-baseline italic font-bold tracking-tight text-stone-900 select-none",
         sizes[size],
         className,
       )}
     >
       not<span className="text-brand">.</span>
       {suffix && (
-        <span className="ml-2 not-italic font-medium text-zinc-400 text-[0.7em] tracking-normal uppercase">
+        <span className="ml-2 not-italic font-medium text-stone-600 text-[0.7em] tracking-normal uppercase">
           {suffix}
         </span>
       )}

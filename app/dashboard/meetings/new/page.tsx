@@ -19,7 +19,7 @@ export default async function NewMeetingPage() {
     <div className="px-8 py-8 space-y-6 max-w-5xl">
       <header className="space-y-1">
         <h1 className="text-2xl font-semibold">Process meeting transcript</h1>
-        <p className="text-sm text-zinc-400">
+        <p className="text-sm text-stone-600">
           Paste a transcript or use the demo sample. Claude extracts tasks, decisions, and blockers — you review before anything is committed.
         </p>
       </header>

@@ -35,10 +35,10 @@ export function SignInForm() {
 
   if (sent) {
     return (
-      <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 text-center space-y-2">
+      <div className="rounded-lg border border-stone-200 bg-white/50 p-6 text-center space-y-2">
         <div className="text-lg font-medium">Check your inbox</div>
-        <p className="text-sm text-zinc-400">
-          We sent a magic link to <span className="text-zinc-200">{email}</span>.
+        <p className="text-sm text-stone-600">
+          We sent a magic link to <span className="text-stone-900">{email}</span>.
           Click it to sign in.
         </p>
       </div>
@@ -60,7 +60,7 @@ export function SignInForm() {
           disabled={submitting}
         />
       </div>
-      {error && <p className="text-sm text-red-400">{error}</p>}
+      {error && <p className="text-sm text-rose-600">{error}</p>}
       <Button type="submit" size="lg" className="w-full" disabled={submitting || !email}>
         {submitting ? "Sending..." : "Send magic link"}
       </Button>

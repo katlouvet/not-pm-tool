@@ -26,7 +26,7 @@ export default async function CalendarPage() {
     <div className="px-8 py-8 space-y-6">
       <header>
         <h1 className="text-2xl font-semibold">Calendar</h1>
-        <p className="text-sm text-zinc-400 mt-1">
+        <p className="text-sm text-stone-600 mt-1">
           Upcoming stages across all projects
         </p>
       </header>
@@ -42,15 +42,15 @@ export default async function CalendarPage() {
             <li key={s.id}>
               <Link
                 href={`/dashboard/projects/${project.id}`}
-                className="block rounded-xl border border-zinc-800 bg-zinc-900/40 hover:bg-zinc-900 hover:border-zinc-700 transition-colors p-4 flex items-center gap-4"
+                className="block rounded-xl border border-stone-200 bg-white hover:bg-white hover:border-stone-300 transition-colors p-4 flex items-center gap-4"
               >
-                <div className="text-xs text-zinc-500 w-32 shrink-0">
+                <div className="text-xs text-stone-500 w-32 shrink-0">
                   {format(parseISO(s.start_date), "MMM d")} →{" "}
                   {format(parseISO(s.end_date), "MMM d")}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-zinc-100 font-medium">{s.name}</div>
-                  <div className="text-xs text-zinc-500 mt-0.5">
+                  <div className="text-stone-900 font-medium">{s.name}</div>
+                  <div className="text-xs text-stone-500 mt-0.5">
                     {project.clients.name} · {project.name}
                   </div>
                 </div>

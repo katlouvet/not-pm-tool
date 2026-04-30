@@ -25,18 +25,18 @@ export default async function PortalLayout({
   if (client.id !== profile.client_id) redirect("/");
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
-      <header className="border-b border-zinc-900 bg-zinc-950/80 backdrop-blur sticky top-0 z-10">
+    <div className="min-h-screen bg-canvas text-stone-900">
+      <header className="border-b border-stone-200 bg-canvas/80 backdrop-blur sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <BrandMark size="sm" />
-            <div className="h-4 w-px bg-zinc-800" />
-            <div className="text-sm text-zinc-300">{client.name}</div>
+            <div className="h-4 w-px bg-stone-200" />
+            <div className="text-sm text-stone-700">{client.name}</div>
           </div>
           <form action="/auth/signout" method="post">
             <button
               type="submit"
-              className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+              className="text-xs text-stone-500 hover:text-stone-700 transition-colors"
             >
               Sign out
             </button>

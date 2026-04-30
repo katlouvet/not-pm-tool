@@ -27,7 +27,7 @@ export function ProgressRing({
           fill="none"
           stroke="currentColor"
           strokeWidth={strokeWidth}
-          className="text-zinc-800"
+          className="text-stone-200"
         />
         <circle
           cx={size / 2}
@@ -39,15 +39,15 @@ export function ProgressRing({
           strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={offset}
-          className="text-brand transition-all duration-700"
+          className="text-accent-deep transition-all duration-700"
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <div className="text-3xl font-semibold text-zinc-100">
+        <div className="text-3xl font-semibold text-stone-900">
           {Math.round(clamped)}%
         </div>
         {label && (
-          <div className="text-xs uppercase tracking-wider text-zinc-500 mt-1">
+          <div className="text-xs uppercase tracking-wider text-stone-500 mt-1">
             {label}
           </div>
         )}

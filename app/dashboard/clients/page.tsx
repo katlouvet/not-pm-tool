@@ -14,14 +14,14 @@ export default async function ClientsPage() {
     <div className="px-8 py-8 space-y-6">
       <header>
         <h1 className="text-2xl font-semibold">Clients</h1>
-        <p className="text-sm text-zinc-400 mt-1">
+        <p className="text-sm text-stone-600 mt-1">
           {clients?.length ?? 0} active
         </p>
       </header>
 
-      <div className="rounded-xl border border-zinc-800 overflow-hidden">
+      <div className="rounded-xl border border-stone-200 overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-zinc-900/60 text-zinc-500 text-left">
+          <thead className="bg-stone-100 text-stone-500 text-left">
             <tr>
               <th className="px-4 py-3 font-medium">Name</th>
               <th className="px-4 py-3 font-medium">Slug</th>
@@ -30,19 +30,19 @@ export default async function ClientsPage() {
               <th className="px-4 py-3 font-medium" />
             </tr>
           </thead>
-          <tbody className="divide-y divide-zinc-800/60">
+          <tbody className="divide-y divide-stone-200/60">
             {(clients ?? []).map((c) => {
               const projectCount = (c.projects as Array<{ count: number }>)[0]?.count ?? 0;
               return (
-                <tr key={c.id} className="bg-zinc-950 hover:bg-zinc-900/40">
-                  <td className="px-4 py-3 text-zinc-100 font-medium">{c.name}</td>
-                  <td className="px-4 py-3 text-zinc-500 font-mono text-xs">{c.slug}</td>
-                  <td className="px-4 py-3 text-zinc-300">{c.primary_contact_email ?? "—"}</td>
-                  <td className="px-4 py-3 text-zinc-300 text-right">{projectCount}</td>
+                <tr key={c.id} className="bg-canvas hover:bg-white">
+                  <td className="px-4 py-3 text-stone-900 font-medium">{c.name}</td>
+                  <td className="px-4 py-3 text-stone-500 font-mono text-xs">{c.slug}</td>
+                  <td className="px-4 py-3 text-stone-700">{c.primary_contact_email ?? "—"}</td>
+                  <td className="px-4 py-3 text-stone-700 text-right">{projectCount}</td>
                   <td className="px-4 py-3 text-right">
                     <Link
                       href={`/portal/${c.slug}`}
-                      className="text-xs text-brand hover:text-rose-400"
+                      className="text-xs text-accent-deep hover:text-accent-deeper"
                     >
                       View portal →
                     </Link>

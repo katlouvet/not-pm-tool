@@ -18,13 +18,13 @@ export default async function MeetingsPage() {
       <header className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold">Meetings</h1>
-          <p className="text-sm text-zinc-400 mt-1">
+          <p className="text-sm text-stone-600 mt-1">
             Processed transcripts. Each meeting can produce tasks and decisions.
           </p>
         </div>
         <Link
           href="/dashboard/meetings/new"
-          className="inline-flex items-center gap-2 rounded-lg bg-brand hover:bg-rose-600 text-white px-4 py-2 text-sm font-medium transition-colors"
+          className="inline-flex items-center gap-2 rounded-lg bg-accent-deep hover:bg-accent-deeper text-white px-4 py-2 text-sm font-medium transition-colors"
         >
           <Plus className="h-4 w-4" />
           Process transcript
@@ -33,7 +33,7 @@ export default async function MeetingsPage() {
 
       <div className="space-y-3">
         {(meetings ?? []).length === 0 ? (
-          <div className="rounded-xl border border-dashed border-zinc-800 bg-zinc-900/20 p-12 text-center text-sm text-zinc-500">
+          <div className="rounded-xl border border-dashed border-stone-200 bg-white/40 p-12 text-center text-sm text-stone-500">
             No meetings processed yet. Click &ldquo;Process transcript&rdquo; to start.
           </div>
         ) : (
@@ -47,14 +47,14 @@ export default async function MeetingsPage() {
               <Link
                 key={m.id}
                 href={`/dashboard/projects/${project.id}`}
-                className="block rounded-xl border border-zinc-800 bg-zinc-900/40 hover:bg-zinc-900 hover:border-zinc-700 transition-colors p-5 space-y-2"
+                className="block rounded-xl border border-stone-200 bg-white hover:bg-white hover:border-stone-300 transition-colors p-5 space-y-2"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="space-y-0.5">
-                    <div className="text-xs uppercase tracking-wider text-zinc-500">
+                    <div className="text-xs uppercase tracking-wider text-stone-500">
                       {project.clients.name} · {project.name}
                     </div>
-                    <div className="text-base font-medium text-zinc-100">
+                    <div className="text-base font-medium text-stone-900">
                       {format(new Date(m.meeting_date), "MMMM d, yyyy")}
                     </div>
                   </div>
@@ -63,7 +63,7 @@ export default async function MeetingsPage() {
                   />
                 </div>
                 {m.summary && (
-                  <p className="text-sm text-zinc-400 leading-relaxed line-clamp-2">
+                  <p className="text-sm text-stone-600 leading-relaxed line-clamp-2">
                     {m.summary}
                   </p>
                 )}

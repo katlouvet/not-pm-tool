@@ -8,28 +8,28 @@ import { cn } from "@/lib/utils";
 import type { ProjectDetail } from "@/lib/projects";
 
 const CONFIDENCE_STYLES = {
-  high: "text-emerald-400",
-  medium: "text-amber-400",
-  low: "text-red-400",
+  high: "text-emerald-600",
+  medium: "text-amber-600",
+  low: "text-rose-600",
 };
 
 const PRIORITY_STYLES = {
-  high: "text-red-300 ring-red-500/30 bg-red-500/10",
-  medium: "text-amber-300 ring-amber-500/30 bg-amber-500/10",
-  low: "text-zinc-400 ring-zinc-700 bg-zinc-800",
+  high: "text-rose-700 ring-rose-200 bg-rose-50",
+  medium: "text-amber-700 ring-amber-200 bg-amber-50",
+  low: "text-stone-600 ring-stone-200 bg-stone-100",
 };
 
 export function ProjectTabs({ project }: { project: ProjectDetail }) {
   return (
     <Tabs defaultValue="overview" className="space-y-6">
-      <TabsList className="bg-zinc-900 border border-zinc-800">
+      <TabsList className="bg-white border border-stone-200">
         <TabsTrigger value="overview">Overview</TabsTrigger>
         <TabsTrigger value="kpis">KPIs</TabsTrigger>
         <TabsTrigger value="timeline">Timeline</TabsTrigger>
         <TabsTrigger value="tasks">
           Tasks
           {project.tasks.length > 0 && (
-            <span className="ml-1.5 text-xs text-zinc-500">
+            <span className="ml-1.5 text-xs text-stone-500">
               {project.tasks.length}
             </span>
           )}
@@ -38,21 +38,21 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
       </TabsList>
 
       <TabsContent value="overview" className="space-y-6">
-        <section className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6 space-y-4">
-          <h2 className="text-sm uppercase tracking-wider text-zinc-500">
+        <section className="rounded-xl border border-stone-200 bg-white p-6 space-y-4">
+          <h2 className="text-sm uppercase tracking-wider text-stone-500">
             Overview
           </h2>
-          <p className="text-zinc-200 leading-relaxed">
+          <p className="text-stone-900 leading-relaxed">
             {project.overview ?? "No overview yet."}
           </p>
         </section>
         {project.internal_notes && (
-          <section className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-6 space-y-3">
-            <h2 className="text-sm uppercase tracking-wider text-amber-400 flex items-center gap-2">
+          <section className="rounded-xl border border-amber-200 bg-amber-50/60 p-6 space-y-3">
+            <h2 className="text-sm uppercase tracking-wider text-amber-700 flex items-center gap-2">
               <EyeOff className="h-3.5 w-3.5" />
               Internal notes — not visible to client
             </h2>
-            <p className="text-zinc-200 leading-relaxed">
+            <p className="text-stone-900 leading-relaxed">
               {project.internal_notes}
             </p>
           </section>
@@ -84,24 +84,24 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
                     : Minus;
               const trendColor =
                 kpi.trend === "up"
-                  ? "text-emerald-400"
+                  ? "text-emerald-600"
                   : kpi.trend === "down"
-                    ? "text-red-400"
-                    : "text-zinc-500";
+                    ? "text-rose-600"
+                    : "text-stone-500";
               return (
                 <div
                   key={kpi.id}
-                  className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 space-y-3"
+                  className="rounded-xl border border-stone-200 bg-white p-5 space-y-3"
                 >
-                  <div className="text-xs uppercase tracking-wider text-zinc-500">
+                  <div className="text-xs uppercase tracking-wider text-stone-500">
                     {kpi.name}
                   </div>
                   <div className="flex items-baseline gap-2">
-                    <div className="text-3xl font-semibold text-zinc-100">
+                    <div className="text-3xl font-semibold text-stone-900">
                       {kpi.current_value ?? "—"}
                     </div>
                     {kpi.unit && (
-                      <div className="text-sm text-zinc-500">{kpi.unit}</div>
+                      <div className="text-sm text-stone-500">{kpi.unit}</div>
                     )}
                     {kpi.trend && (
                       <TrendIcon className={cn("h-4 w-4 ml-auto", trendColor)} />
@@ -109,13 +109,13 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
                   </div>
                   {kpi.target_value !== null && (
                     <>
-                      <div className="text-xs text-zinc-500">
+                      <div className="text-xs text-stone-500">
                         Target: {kpi.target_value} {kpi.unit ?? ""}
                       </div>
                       {percent !== null && (
-                        <div className="h-1 rounded-full bg-zinc-800 overflow-hidden">
+                        <div className="h-1 rounded-full bg-stone-200 overflow-hidden">
                           <div
-                            className="h-full bg-brand"
+                            className="h-full bg-accent-deep"
                             style={{ width: `${percent}%` }}
                           />
                         </div>
@@ -137,20 +137,20 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
             {project.stages.map((stage) => (
               <li
                 key={stage.id}
-                className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 flex items-center gap-4"
+                className="rounded-xl border border-stone-200 bg-white p-4 flex items-center gap-4"
               >
                 <div
                   className={cn(
                     "h-2 w-2 rounded-full shrink-0",
-                    stage.status === "done" && "bg-emerald-400",
-                    stage.status === "in_progress" && "bg-brand animate-pulse",
-                    stage.status === "not_started" && "bg-zinc-700",
-                    stage.status === "blocked" && "bg-red-400",
+                    stage.status === "done" && "bg-emerald-500",
+                    stage.status === "in_progress" && "bg-accent-deep animate-pulse",
+                    stage.status === "not_started" && "bg-stone-300",
+                    stage.status === "blocked" && "bg-rose-500",
                   )}
                 />
                 <div className="flex-1 min-w-0">
-                  <div className="font-medium text-zinc-100">{stage.name}</div>
-                  <div className="text-xs text-zinc-500 mt-0.5">
+                  <div className="font-medium text-stone-900">{stage.name}</div>
+                  <div className="text-xs text-stone-500 mt-0.5">
                     {stage.start_date &&
                       format(new Date(stage.start_date), "MMM d")}
                     {stage.end_date && (
@@ -172,9 +172,9 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
         {project.tasks.length === 0 ? (
           <EmptyState>No tasks yet. Process a meeting transcript to extract tasks.</EmptyState>
         ) : (
-          <div className="rounded-xl border border-zinc-800 overflow-hidden">
+          <div className="rounded-xl border border-stone-200 overflow-hidden">
             <table className="w-full text-sm">
-              <thead className="bg-zinc-900/60 text-zinc-500">
+              <thead className="bg-stone-100 text-stone-500">
                 <tr className="text-left">
                   <th className="px-4 py-3 font-medium">Title</th>
                   <th className="px-4 py-3 font-medium">Owner</th>
@@ -185,19 +185,19 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
                   <th className="px-4 py-3 font-medium text-center">Client</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-800/60">
+              <tbody className="divide-y divide-stone-200/60">
                 {project.tasks.map((t) => (
-                  <tr key={t.id} className="bg-zinc-950 hover:bg-zinc-900/40">
-                    <td className="px-4 py-3 text-zinc-100">
+                  <tr key={t.id} className="bg-canvas hover:bg-white">
+                    <td className="px-4 py-3 text-stone-900">
                       <div className="font-medium">{t.title}</div>
                       {t.source_quote && (
-                        <div className="text-xs text-zinc-500 italic mt-1 line-clamp-1">
+                        <div className="text-xs text-stone-500 italic mt-1 line-clamp-1">
                           “{t.source_quote}”
                         </div>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-zinc-300">{t.owner ?? "—"}</td>
-                    <td className="px-4 py-3 text-zinc-400">
+                    <td className="px-4 py-3 text-stone-700">{t.owner ?? "—"}</td>
+                    <td className="px-4 py-3 text-stone-600">
                       {t.due_date ? format(new Date(t.due_date), "MMM d") : "—"}
                     </td>
                     <td className="px-4 py-3">
@@ -218,9 +218,9 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
                     </td>
                     <td className="px-4 py-3 text-center">
                       {t.client_visible ? (
-                        <Eye className="h-4 w-4 text-brand inline" />
+                        <Eye className="h-4 w-4 text-accent-deep inline" />
                       ) : (
-                        <EyeOff className="h-4 w-4 text-zinc-600 inline" />
+                        <EyeOff className="h-4 w-4 text-stone-400 inline" />
                       )}
                     </td>
                   </tr>
@@ -239,10 +239,10 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
             {project.meetings.map((m) => (
               <li
                 key={m.id}
-                className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 space-y-2"
+                className="rounded-xl border border-stone-200 bg-white p-4 space-y-2"
               >
                 <div className="flex items-center justify-between gap-3">
-                  <div className="text-sm text-zinc-200 font-medium">
+                  <div className="text-sm text-stone-900 font-medium">
                     {format(new Date(m.meeting_date), "MMM d, yyyy")}
                   </div>
                   <StatusBadge
@@ -252,7 +252,7 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
                   />
                 </div>
                 {m.summary && (
-                  <p className="text-sm text-zinc-400 leading-relaxed">
+                  <p className="text-sm text-stone-600 leading-relaxed">
                     {m.summary}
                   </p>
                 )}
@@ -267,7 +267,7 @@ export function ProjectTabs({ project }: { project: ProjectDetail }) {
 
 function EmptyState({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-dashed border-zinc-800 bg-zinc-900/20 p-12 text-center text-sm text-zinc-500">
+    <div className="rounded-xl border border-dashed border-stone-200 bg-white/40 p-12 text-center text-sm text-stone-500">
       {children}
     </div>
   );

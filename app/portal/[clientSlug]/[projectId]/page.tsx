@@ -68,30 +68,30 @@ export default async function PortalProjectPage({
   return (
     <main className="max-w-4xl mx-auto px-6 py-10 space-y-8">
       {/* Hero */}
-      <section className="rounded-2xl border border-zinc-800 bg-linear-to-br from-zinc-900/80 to-zinc-950 p-8">
+      <section className="rounded-2xl border border-stone-200 bg-linear-to-br from-zinc-900/80 to-zinc-950 p-8">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <ProgressRing percent={percent} label={statusLabel(project.status)} />
           <div className="flex-1 space-y-3 text-center md:text-left">
-            <div className="text-xs uppercase tracking-[0.2em] text-zinc-500">
+            <div className="text-xs uppercase tracking-[0.2em] text-stone-500">
               Project status
             </div>
             <h1 className="text-3xl font-semibold">{project.name}</h1>
-            <div className="flex flex-wrap gap-x-6 gap-y-1 justify-center md:justify-start text-sm text-zinc-400">
+            <div className="flex flex-wrap gap-x-6 gap-y-1 justify-center md:justify-start text-sm text-stone-600">
               {project.kickoff_date && (
                 <div>
-                  <span className="text-zinc-500">Kick-off:</span>{" "}
+                  <span className="text-stone-500">Kick-off:</span>{" "}
                   {format(new Date(project.kickoff_date), "MMM d, yyyy")}
                 </div>
               )}
               {project.delivery_date && (
                 <div>
-                  <span className="text-zinc-500">Delivery:</span>{" "}
+                  <span className="text-stone-500">Delivery:</span>{" "}
                   {format(new Date(project.delivery_date), "MMM d, yyyy")}
                 </div>
               )}
             </div>
             {project.overview && (
-              <p className="text-sm text-zinc-400 leading-relaxed pt-2">
+              <p className="text-sm text-stone-600 leading-relaxed pt-2">
                 {project.overview}
               </p>
             )}
@@ -101,18 +101,18 @@ export default async function PortalProjectPage({
 
       {/* Action required */}
       {actionItems.length > 0 && (
-        <section className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-5 flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 text-amber-400 shrink-0 mt-0.5" />
+        <section className="rounded-xl border border-amber-200 bg-amber-50/60 p-5 flex items-start gap-3">
+          <AlertCircle className="h-5 w-5 text-amber-700 shrink-0 mt-0.5" />
           <div className="space-y-2 flex-1">
-            <div className="text-sm font-medium text-amber-200">
+            <div className="text-sm font-medium text-amber-700">
               {actionItems.length} item{actionItems.length === 1 ? "" : "s"} awaiting your input
             </div>
-            <ul className="space-y-1 text-sm text-zinc-300">
+            <ul className="space-y-1 text-sm text-stone-700">
               {actionItems.map((t) => (
                 <li key={t.id} className="flex justify-between gap-3">
                   <span className="truncate">{t.title}</span>
                   {t.due_date && (
-                    <span className="text-xs text-zinc-500 shrink-0">
+                    <span className="text-xs text-stone-500 shrink-0">
                       due {format(new Date(t.due_date), "MMM d")}
                     </span>
                   )}
@@ -126,7 +126,7 @@ export default async function PortalProjectPage({
       {/* KPIs */}
       {kpis && kpis.length > 0 && (
         <section className="space-y-3">
-          <h2 className="text-xs uppercase tracking-wider text-zinc-500">
+          <h2 className="text-xs uppercase tracking-wider text-stone-500">
             Key metrics
           </h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -139,22 +139,22 @@ export default async function PortalProjectPage({
                     : Minus;
               const trendColor =
                 kpi.trend === "up"
-                  ? "text-emerald-400"
+                  ? "text-emerald-600"
                   : kpi.trend === "down"
-                    ? "text-red-400"
-                    : "text-zinc-500";
+                    ? "text-rose-600"
+                    : "text-stone-500";
               return (
                 <div
                   key={kpi.id}
-                  className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 space-y-2"
+                  className="rounded-xl border border-stone-200 bg-white p-4 space-y-2"
                 >
-                  <div className="text-xs text-zinc-500">{kpi.name}</div>
+                  <div className="text-xs text-stone-500">{kpi.name}</div>
                   <div className="flex items-baseline gap-2">
-                    <div className="text-2xl font-semibold text-zinc-100">
+                    <div className="text-2xl font-semibold text-stone-900">
                       {kpi.current_value ?? "—"}
                     </div>
                     {kpi.unit && (
-                      <div className="text-xs text-zinc-500">{kpi.unit}</div>
+                      <div className="text-xs text-stone-500">{kpi.unit}</div>
                     )}
                     {kpi.trend && (
                       <TrendIcon
@@ -163,7 +163,7 @@ export default async function PortalProjectPage({
                     )}
                   </div>
                   {kpi.target_value !== null && (
-                    <div className="text-xs text-zinc-500">
+                    <div className="text-xs text-stone-500">
                       Target: {kpi.target_value} {kpi.unit ?? ""}
                     </div>
                   )}
@@ -176,22 +176,22 @@ export default async function PortalProjectPage({
 
       {/* Timeline */}
       <section className="space-y-3">
-        <h2 className="text-xs uppercase tracking-wider text-zinc-500">
+        <h2 className="text-xs uppercase tracking-wider text-stone-500">
           Production timeline
         </h2>
         <ol className="space-y-2">
           {stageList.map((stage) => (
             <li
               key={stage.id}
-              className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 flex items-center gap-4"
+              className="rounded-xl border border-stone-200 bg-white p-4 flex items-center gap-4"
             >
               <div
                 className={cn(
                   "h-2 w-2 rounded-full shrink-0",
-                  stage.status === "done" && "bg-emerald-400",
-                  stage.status === "in_progress" && "bg-brand animate-pulse",
-                  stage.status === "not_started" && "bg-zinc-700",
-                  stage.status === "blocked" && "bg-red-400",
+                  stage.status === "done" && "bg-emerald-500",
+                  stage.status === "in_progress" && "bg-accent-deep animate-pulse",
+                  stage.status === "not_started" && "bg-stone-300",
+                  stage.status === "blocked" && "bg-rose-500",
                 )}
               />
               <div className="flex-1 min-w-0">
@@ -199,13 +199,13 @@ export default async function PortalProjectPage({
                   className={cn(
                     "font-medium",
                     stage.status === "done"
-                      ? "text-zinc-400 line-through"
-                      : "text-zinc-100",
+                      ? "text-stone-600 line-through"
+                      : "text-stone-900",
                   )}
                 >
                   {stage.name}
                 </div>
-                <div className="text-xs text-zinc-500 mt-0.5">
+                <div className="text-xs text-stone-500 mt-0.5">
                   {stage.start_date &&
                     format(new Date(stage.start_date), "MMM d")}
                   {stage.end_date && (
@@ -222,7 +222,7 @@ export default async function PortalProjectPage({
         </ol>
       </section>
 
-      <footer className="text-center text-xs text-zinc-600 py-6 border-t border-zinc-900">
+      <footer className="text-center text-xs text-stone-400 py-6 border-t border-stone-200">
         Questions? Just reply to your weekly update email.
       </footer>
     </main>

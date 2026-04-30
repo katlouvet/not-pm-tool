@@ -18,9 +18,9 @@ export default async function DashboardLayout({
   ];
 
   return (
-    <div className="min-h-screen flex bg-zinc-950 text-zinc-100">
-      <aside className="w-60 border-r border-zinc-800 bg-zinc-950 flex flex-col">
-        <div className="px-6 py-5 border-b border-zinc-800">
+    <div className="min-h-screen flex bg-canvas text-stone-900">
+      <aside className="w-60 border-r border-stone-200 bg-canvas flex flex-col">
+        <div className="px-6 py-5 border-b border-stone-200">
           <BrandMark size="md" suffix="PM" />
         </div>
 
@@ -29,7 +29,7 @@ export default async function DashboardLayout({
             <Link
               key={href}
               href={href}
-              className="flex items-center gap-3 px-3 py-2 rounded-md text-sm text-zinc-300 hover:bg-zinc-900 hover:text-zinc-100 transition-colors"
+              className="flex items-center gap-3 px-3 py-2 rounded-md text-sm text-stone-700 hover:bg-white hover:text-stone-900 transition-colors"
             >
               <Icon className="h-4 w-4" />
               {label}
@@ -37,14 +37,14 @@ export default async function DashboardLayout({
           ))}
         </nav>
 
-        <div className="border-t border-zinc-800 px-3 py-3 text-sm">
-          <div className="px-3 py-2 text-xs text-zinc-500 truncate">
+        <div className="border-t border-stone-200 px-3 py-3 text-sm">
+          <div className="px-3 py-2 text-xs text-stone-500 truncate">
             {profile.email}
           </div>
           <form action="/auth/signout" method="post">
             <button
               type="submit"
-              className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100 transition-colors"
+              className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm text-stone-600 hover:bg-white hover:text-stone-900 transition-colors"
             >
               <LogOut className="h-4 w-4" />
               Sign out

@@ -21,10 +21,22 @@ const STATUS_LABEL = {
 };
 
 const STATUS_COLOR = {
-  on_track: "#34d399",
-  at_risk: "#fbbf24",
-  blocked: "#f87171",
-  complete: "#34d399",
+  on_track: "#1f4842",
+  at_risk: "#b45309",
+  blocked: "#be123c",
+  complete: "#059669",
+};
+
+const COLOR = {
+  bg: "#f4f1eb",
+  card: "#ffffff",
+  text: "#1a1a1a",
+  textMuted: "#6b6b6b",
+  textSubtle: "#9a9a9a",
+  border: "#e5e3dd",
+  brand: "#cc0000",
+  accent: "#1f4842",
+  accentDeeper: "#163530",
 };
 
 export function EmailTemplate({
@@ -46,8 +58,8 @@ export function EmailTemplate({
   return (
     <div
       style={{
-        backgroundColor: "#0a0a0a",
-        color: "#e4e4e7",
+        backgroundColor: COLOR.bg,
+        color: COLOR.text,
         fontFamily:
           "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
         maxWidth: 560,
@@ -57,35 +69,48 @@ export function EmailTemplate({
     >
       <div
         style={{
-          fontSize: 11,
-          letterSpacing: "0.3em",
-          color: "#a1a1aa",
+          fontSize: 20,
+          fontStyle: "italic",
+          fontWeight: 700,
+          letterSpacing: "-0.02em",
           textAlign: "center",
+          color: COLOR.text,
         }}
       >
-        NOT.
+        not<span style={{ color: COLOR.brand }}>.</span>
       </div>
 
       <div
         style={{
           textAlign: "center",
-          marginTop: 8,
+          marginTop: 6,
           marginBottom: 24,
-          fontSize: 12,
-          color: "#71717a",
+          fontSize: 11,
+          color: COLOR.textSubtle,
+          letterSpacing: "0.05em",
+          textTransform: "uppercase",
         }}
       >
-        Project status update · Week of {format(weekOf, "MMMM d, yyyy")}
+        Project status · Week of {format(weekOf, "MMMM d, yyyy")}
       </div>
 
-      <div style={{ textAlign: "center", margin: "24px 0" }}>
+      <div
+        style={{
+          backgroundColor: COLOR.card,
+          border: `1px solid ${COLOR.border}`,
+          borderRadius: 16,
+          padding: "32px 24px",
+          textAlign: "center",
+          marginBottom: 16,
+        }}
+      >
         <svg width={96} height={96} style={{ transform: "rotate(-90deg)" }}>
           <circle
             cx={48}
             cy={48}
             r={radius}
             fill="none"
-            stroke="#27272a"
+            stroke={COLOR.border}
             strokeWidth={8}
           />
           <circle
@@ -93,7 +118,7 @@ export function EmailTemplate({
             cy={48}
             r={radius}
             fill="none"
-            stroke="#cc0000"
+            stroke={COLOR.accent}
             strokeWidth={8}
             strokeLinecap="round"
             strokeDasharray={circumference}
@@ -106,23 +131,23 @@ export function EmailTemplate({
             · {STATUS_LABEL[status]}
           </span>
         </div>
-        <div style={{ color: "#71717a", fontSize: 14, marginTop: 4 }}>
+        <div style={{ color: COLOR.textMuted, fontSize: 14, marginTop: 4 }}>
           {projectName}
         </div>
       </div>
 
-      <hr style={{ border: 0, borderTop: "1px solid #27272a", margin: "24px 0" }} />
+      <p style={{ fontSize: 14, lineHeight: 1.7, color: COLOR.text, padding: "0 4px" }}>
+        {copy}
+      </p>
 
-      <p style={{ fontSize: 14, lineHeight: 1.7, color: "#d4d4d8" }}>{copy}</p>
+      <hr style={{ border: 0, borderTop: `1px solid ${COLOR.border}`, margin: "24px 4px" }} />
 
-      <hr style={{ border: 0, borderTop: "1px solid #27272a", margin: "24px 0" }} />
-
-      <div style={{ marginBottom: 24 }}>
+      <div style={{ marginBottom: 24, padding: "0 4px" }}>
         <div
           style={{
             fontSize: 11,
             letterSpacing: "0.15em",
-            color: "#71717a",
+            color: COLOR.textSubtle,
             textTransform: "uppercase",
             marginBottom: 12,
           }}
@@ -130,20 +155,20 @@ export function EmailTemplate({
           This week
         </div>
         {thisWeek.length === 0 ? (
-          <div style={{ fontSize: 14, color: "#71717a" }}>No completed milestones this week.</div>
+          <div style={{ fontSize: 14, color: COLOR.textMuted }}>No completed milestones this week.</div>
         ) : (
           thisWeek.map((item, i) => (
             <div
               key={i}
               style={{
                 fontSize: 14,
-                color: "#e4e4e7",
+                color: COLOR.text,
                 marginBottom: 6,
                 display: "flex",
                 gap: 8,
               }}
             >
-              <span style={{ color: "#34d399" }}>✓</span>
+              <span style={{ color: "#059669" }}>✓</span>
               <span>{item}</span>
             </div>
           ))
@@ -151,12 +176,12 @@ export function EmailTemplate({
       </div>
 
       {inProgress && (
-        <div style={{ marginBottom: 24 }}>
+        <div style={{ marginBottom: 24, padding: "0 4px" }}>
           <div
             style={{
               fontSize: 11,
               letterSpacing: "0.15em",
-              color: "#71717a",
+              color: COLOR.textSubtle,
               textTransform: "uppercase",
               marginBottom: 12,
             }}
@@ -166,22 +191,22 @@ export function EmailTemplate({
           <div
             style={{
               fontSize: 14,
-              color: "#e4e4e7",
+              color: COLOR.text,
               marginBottom: 6,
               display: "flex",
               gap: 8,
             }}
           >
-            <span style={{ color: "#cc0000" }}>→</span>
+            <span style={{ color: COLOR.accent }}>→</span>
             <span>{inProgress.name}</span>
-            <span style={{ color: "#71717a", marginLeft: "auto" }}>
+            <span style={{ color: COLOR.textMuted, marginLeft: "auto" }}>
               {inProgress.percent}%
             </span>
           </div>
           <div
             style={{
               height: 4,
-              backgroundColor: "#27272a",
+              backgroundColor: COLOR.border,
               borderRadius: 2,
               overflow: "hidden",
               marginTop: 8,
@@ -191,19 +216,19 @@ export function EmailTemplate({
               style={{
                 width: `${inProgress.percent}%`,
                 height: "100%",
-                backgroundColor: "#cc0000",
+                backgroundColor: COLOR.accent,
               }}
             />
           </div>
         </div>
       )}
 
-      <div style={{ marginBottom: 32 }}>
+      <div style={{ marginBottom: 32, padding: "0 4px" }}>
         <div
           style={{
             fontSize: 11,
             letterSpacing: "0.15em",
-            color: "#71717a",
+            color: COLOR.textSubtle,
             textTransform: "uppercase",
             marginBottom: 12,
           }}
@@ -211,20 +236,20 @@ export function EmailTemplate({
           Next week
         </div>
         {nextWeek.length === 0 ? (
-          <div style={{ fontSize: 14, color: "#71717a" }}>No new milestones starting next week.</div>
+          <div style={{ fontSize: 14, color: COLOR.textMuted }}>No new milestones starting next week.</div>
         ) : (
           nextWeek.map((item, i) => (
             <div
               key={i}
               style={{
                 fontSize: 14,
-                color: "#e4e4e7",
+                color: COLOR.text,
                 marginBottom: 6,
                 display: "flex",
                 gap: 8,
               }}
             >
-              <span style={{ color: "#71717a" }}>○</span>
+              <span style={{ color: COLOR.textSubtle }}>○</span>
               <span>{item}</span>
             </div>
           ))
@@ -237,8 +262,8 @@ export function EmailTemplate({
           style={{
             display: "inline-block",
             padding: "12px 28px",
-            backgroundColor: "#fafafa",
-            color: "#0a0a0a",
+            backgroundColor: COLOR.accent,
+            color: "#ffffff",
             textDecoration: "none",
             borderRadius: 8,
             fontSize: 14,
@@ -249,16 +274,16 @@ export function EmailTemplate({
         </a>
       </div>
 
-      <hr style={{ border: 0, borderTop: "1px solid #27272a", margin: "24px 0" }} />
+      <hr style={{ border: 0, borderTop: `1px solid ${COLOR.border}`, margin: "24px 4px" }} />
 
-      <div style={{ fontSize: 11, color: "#52525b", textAlign: "center", lineHeight: 1.6 }}>
+      <div style={{ fontSize: 11, color: COLOR.textMuted, textAlign: "center", lineHeight: 1.6 }}>
         NOT. · {clientName} — {projectName}
         <br />
         Questions? Just reply to this email.
         <br />
-        <span style={{ color: "#3f3f46" }}>
+        <span style={{ color: COLOR.textSubtle }}>
           NOT. SAS · 12 rue de l&apos;Exemple, 75001 Paris ·{" "}
-          <a href="#" style={{ color: "#3f3f46" }}>
+          <a href="#" style={{ color: COLOR.textSubtle }}>
             Unsubscribe
           </a>
         </span>
